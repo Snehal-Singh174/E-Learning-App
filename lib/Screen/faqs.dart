@@ -1,0 +1,31 @@
+import 'package:code_warrior/module/Configuration.dart';
+import 'package:flutter/material.dart';
+import 'datasorce.dart';
+
+class FAQPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FAQs'),
+        backgroundColor: primaryGreen,
+      ),
+      body: ListView.builder(
+          itemCount: DataSource.questionAnswers.length,
+          itemBuilder: (context, index) {
+            return ExpansionTile(
+              title: Text(
+                DataSource.questionAnswers[index]['question'],
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(DataSource.questionAnswers[index]['answer']),
+                )
+              ],
+            );
+          }),
+    );
+  }
+}
