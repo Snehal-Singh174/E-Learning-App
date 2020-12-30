@@ -17,12 +17,16 @@ class _QuizState extends State<Quiz> {
 
   List<String> images = [
     "images/py.png",
-    "images/ml.png"
+    "images/ml.png",
+    "images/nlp.jpg",
+    "images/cv.jpg"
   ];
 
   List<String> des = [
     "Python is one of the most popular and fastest programming language since half a decade.\nIf You think you have learnt it.. \nJust test yourself !!",
     "Machine Learning is most demanded technology in current market\n Everyone is trying to develop their skill in this domain...\nCheck Your skill !!",
+    "Natural language processing (NLP) is a subfield of linguistics, computer science, and artificial intelligence\n concerned with the\n interactions between computers and human language !!",
+    "Computer vision is an interdisciplinary scientific field\n that deals with how computers\n can gain high-level understanding\n from digital images or videos !!",
     ];
 
   Widget customcard(String langname, String image, String des){
@@ -164,11 +168,9 @@ class _QuizState extends State<Quiz> {
             ),
             _container(0.0, 30.0, 10.0, Color(0xFF62B9BF), "Quiz", "assets/images/quiz.png"),
             customcard("Python", images[0], des[0]),
-            customcard("Machine Learning", images[1], des[1])
-
-
-
-
+            customcard("Machine Learning", images[1], des[1]),
+            customcard("Natural Language Processing", images[2], des[2]),
+            customcard("Computer Vision", images[3], des[3]),
 
           ],
         ),

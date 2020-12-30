@@ -1,0 +1,89 @@
+[
+  {
+    "1": "What Will Be The Output Of the Following Code ?\na = \"p\" * 3\nprint(a)",
+    "2": "Which function finds out the Variable type in Python ?",
+    "3": "Which of the following keyword is used to define a function in Python ?",
+    "4": "Which of the following is a print Function in Python ?",
+    "5": "Which function finds out the Variable type in Python ?",
+    "6": "Which function finds out the Variable type in Python ?",
+    "7": "Which of the following keyword is used to define a function in Python ?",
+    "8": "Which of the following is a print Function in Python ?",
+    "9": "Which function finds out the Variable type in Python ?",
+    "10": "What Will Be The Output Of the Following Code ?\na = \"p\" * 3\nprint(a)"
+  },
+  {
+    "1": {
+      "a": "pp",
+      "b": "ppp",
+      "c": "3p",
+      "d": "p3"
+    },
+    "2": {
+      "a": "typedef",
+      "b": "typeof",
+      "c": "type",
+      "d": "find"
+    },
+    "3": {
+      "a": "func",
+      "b": "def",
+      "c": "void",
+      "d": "function"
+    },
+    "4": {
+      "a": "cout",
+      "b": "print",
+      "c": "println",
+      "d": "stderr"
+    },
+    "5": {
+      "a": "typedef",
+      "b": "typeof",
+      "c": "type",
+      "d": "find"
+    },
+    "6": {
+      "a": "typedef",
+      "b": "typeof",
+      "c": "type",
+      "d": "find"
+    },
+    "7": {
+      "a": "func",
+      "b": "def",
+      "c": "void",
+      "d": "function"
+    },
+    "8": {
+      "a": "cout",
+      "b": "print",
+      "c": "println",
+      "d": "stderr"
+    },
+    "9": {
+      "a": "typedef",
+      "b": "typeof",
+      "c": "type",
+      "d": "find"
+    },
+    "10": {
+      "a": "pp",
+      "b": "ppp",
+      "c": "3p",
+      "d": "p3"
+    }
+
+  },
+  {
+    "1": "ppp",
+    "2": "type",
+    "3": "def",
+    "4": "print",
+    "5": "type",
+    "6": "type",
+    "7": "def",
+    "8": "print",
+    "9": "type",
+    "10": "ppp"
+  }
+]
