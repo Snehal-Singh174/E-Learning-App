@@ -41,4 +41,67 @@ $ flutter run
 
 ## :key: Results
 
+<div style="text-align: center"><table><tr>
+  <td style="text-align: center">
+    <img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(36).png" width="200"/>
+</td>
+<td style="text-align: center">
+  <h2>SplashScreen</h2>
+</td>
+  <td style="text-align: center">
+<img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(37).png" width="200"/>
+</td>
+</tr></table></div>
+
+<div style="text-align: center"><table><tr>
+  <td style="text-align: center">
+    <img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(38).png" width="200"/>
+</td>
+<td style="text-align: center">
+  <h2>Login and Signup Page</h2>
+  <img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(233).png" width="400"/>
+</td>
+  <td style="text-align: center">
+<img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(39).png" width="200"/>
+</td>
+</tr></table></div>
+
+<div style="text-align: center"><table><tr>
+  <td style="text-align: center">
+    <img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(45).png" width="200"/>
+</td>
+<td style="text-align: center">
+  <h2>All Tabs</h2>
+</td>
+  <td style="text-align: center">
+<img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(47).png" width="200"/>
+</td>
+</tr></table>
+<table><tr>
+  <td style="text-align: center">
+    <img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(48).png" width="200"/>
+</td>
+  <td style="text-align: center">
+<img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(224).png" width="200"/>
+</td>
+</tr></table>
+  <table><tr>
+  <td style="text-align: center">
+    <img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(240).png" width="200"/>
+</td>
+     <td style="text-align: center">
+<img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(55).png" width="200"/>
+</td>
+  <td style="text-align: center">
+<img src="https://github.com/Snehal-Singh174/CoDy_GiRlS/blob/master/output/Screenshot%20(62).png" width="200"/>
+</td>
+</tr></table>
+</div>
+
+
 ## :clap: And it's done!
+Feel free to mail me for any doubts/query 
+:email: singhsnehal174@gmail.com
+
+## :heart: Owner
+Made with :heart:&nbsp;  by [Snehal Singh](https://github.com/Snehal-Singh174) and [Niyati Patel](https://github.com/Niyati1111)
