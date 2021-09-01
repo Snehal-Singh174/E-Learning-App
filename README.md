@@ -104,4 +104,4 @@ Feel free to mail me for any doubts/query
 :email: singhsnehal174@gmail.com
 
 ## :heart: Owner
-Made with :heart:&nbsp;  by [Snehal Singh](https://github.com/Snehal-Singh174) and [Niyati Patel](https://github.com/Niyati1111)
+Made with :heart:&nbsp;  by [Snehal Singh](https://github.com/Snehal-Singh174)
