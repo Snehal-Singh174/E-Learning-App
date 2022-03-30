@@ -35,7 +35,7 @@ Also their are videos as well as materials of particular subject so whatever wou
 1. Clone the repo and run it
 ```
 $ git clone https://github.com/Snehal-Singh174/E-Learning-App.git
-$ cd CoDy_GiRlS/
+$ cd E-Learning-App/
 $ flutter run
 ```
 
