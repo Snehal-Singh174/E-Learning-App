@@ -14,7 +14,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final databaseReference = Firestore.instance;
+  final databaseReference = FirebaseFirestore.instance;
   final usernamecontroller = new TextEditingController();
   final emailcontroller = new TextEditingController();
   final passwordcontroller = new TextEditingController();
@@ -22,13 +22,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Future signup(BuildContext context) async {
 
     try{
-      FirebaseUser user;
-      AuthResult result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text);
+      var user;
+      var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text);
       user = result.user;
       await user.sendEmailVerification();
       await databaseReference.collection("User")
-      .document(user.uid)
-      .setData({
+      .doc(user.uid)
+      .set({
         'email':emailcontroller.text,
         'password':passwordcontroller.text,
         'username': usernamecontroller.text,
@@ -41,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 //      });
       print("Signin Successfull");
       setState(() {
-        Scaffold.of(context).showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Verify your email first and then login"),));
 
       });
@@ -159,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Radius.circular(20),
                             )
                         ),
-                        child: FlatButton(
+                        child: ElevatedButton(
                           onPressed: () async {
                             signup(context);},
                           child: Text(

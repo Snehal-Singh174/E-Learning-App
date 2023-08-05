@@ -1,6 +1,6 @@
 class StepModel {
-  final int id;
-  final String text;
+  final int? id;
+  final String? text;
 
   StepModel({this.id, this.text});
 

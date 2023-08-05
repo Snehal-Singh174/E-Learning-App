@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Size size = MediaQuery.of(context).size;
     _controller.addListener(() {
       setState(() {
-        initialPage = _controller.page.round();
+        initialPage = _controller.page!.round();
       });
     });
     return SafeArea(
@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Icon(Icons.arrow_back_ios),
               ),
             ),
-            FlatButton(
+            ElevatedButton(
               onPressed: (){
                 // print(initialPage);
                 // print(list.length);
@@ -91,14 +91,14 @@ class _SplashScreenState extends State<SplashScreen> {
         return Column(
           children: <Widget>[
             index == 1
-                ? _displayText(list[index].text)
-                : _displayImage(list[index].id),
+                ? _displayText(list[index].text!)
+                : _displayImage(list[index].id!),
             SizedBox(
               height: 10,
             ),
             index == 1
-                ? _displayImage(list[index].id)
-                : _displayText(list[index].text),
+                ? _displayImage(list[index].id!)
+                : _displayText(list[index].text!),
           ],
         );
       }),

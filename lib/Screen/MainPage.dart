@@ -1,7 +1,8 @@
 import 'package:code_warrior/Screen/courses/python_playlist.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:code_warrior/module/Configuration.dart';
+import 'package:flutter/material.dart';
+
+import '../services/api_services.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -9,12 +10,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List course =[
-    'Python',
-    '',
-    '',
-    ''
-  ];
+  List course = ['Python', '', '', ''];
   double xOffset = 0;
   double yOffset = 0;
   double scaleFactor = 1;
@@ -24,15 +20,12 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(scaleFactor)..rotateY(isDrawerOpen? -0.5:0),
+        ..scale(scaleFactor)
+        ..rotateY(isDrawerOpen ? -0.5 : 0),
       duration: Duration(milliseconds: 250),
-
       decoration: BoxDecoration(
           color: Color(0xFFB7E9F7),
-
-          borderRadius: BorderRadius.circular(isDrawerOpen?40:0.0)
-
-      ),
+          borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0)),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -43,36 +36,45 @@ class _MainPageState extends State<MainPage> {
               margin: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
-                  isDrawerOpen?IconButton(
-                    icon: Icon(Icons.arrow_back_ios),
-                    onPressed: (){
-                      setState(() {
-                        xOffset=0;
-                        yOffset=0;
-                        scaleFactor=1;
-                        isDrawerOpen=false;
-
-                      });
-                    },
-
-                  ): IconButton(
-                      icon: Icon(Icons.menu),
-                      onPressed: () {
-                        setState(() {
-                          xOffset = 230;
-                          yOffset = 150;
-                          scaleFactor = 0.6;
-                          isDrawerOpen=true;
-                        });
-                      }),
-                  SizedBox(width: 50,),
+                  isDrawerOpen
+                      ? IconButton(
+                          icon: Icon(Icons.arrow_back_ios),
+                          onPressed: () {
+                            setState(() {
+                              xOffset = 0;
+                              yOffset = 0;
+                              scaleFactor = 1;
+                              isDrawerOpen = false;
+                            });
+                          },
+                        )
+                      : IconButton(
+                          icon: Icon(Icons.menu),
+                          onPressed: () {
+                            setState(() {
+                              xOffset = 230;
+                              yOffset = 150;
+                              scaleFactor = 0.6;
+                              isDrawerOpen = true;
+                            });
+                          }),
+                  SizedBox(
+                    width: 50,
+                  ),
                   Column(
                     children: [
-                      Text('CodeWarriors',style: TextStyle(color: primaryGreen,fontWeight: FontWeight.bold,fontSize: 32),),
+                      Text(
+                        'CodeWarriors',
+                        style: TextStyle(
+                            color: primaryGreen,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32),
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.red,
-                          image: DecorationImage(image: AssetImage("assets/images/logo.png")),
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/logo.png")),
                         ),
                       ),
                     ],
@@ -80,7 +82,8 @@ class _MainPageState extends State<MainPage> {
                 ],
               ),
             ),
-            _container(0.0, 30.0, 10.0, Color(0xFF62B9BF), "Courses", "assets/images/courses.png"),
+            _container(0.0, 30.0, 10.0, Color(0xFF62B9BF), "Courses",
+                "assets/images/courses.png"),
 
             // Container(
             //   padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
@@ -99,42 +102,52 @@ class _MainPageState extends State<MainPage> {
             //   ),
             // ),
 
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
 
-            Container(height: 120,
+            Container(
+              height: 120,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                itemBuilder: (context,index){
+                itemBuilder: (context, index) {
                   return Container(
                     child: Column(
                       children: [
                         Container(
-
                           padding: EdgeInsets.all(10),
                           margin: EdgeInsets.only(left: 20),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               boxShadow: shadowList,
-                              borderRadius: BorderRadius.circular(10)
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Image.asset(
+                            categories[index]['iconPath'],
+                            height: 50,
+                            width: 50,
+                            color: Colors.grey[700],
                           ),
-                          child: Image.asset(categories[index]['iconPath'],       height: 50,
-                            width: 50,color: Colors.grey[700],),
                         ),
                         //Text(categories[index]['name'])
                       ],
                     ),
                   );
                 },
-
               ),
             ),
 
-
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 //Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Python_Playlist(url: "https://pythoncw.herokuapp.com/",title: "Python",)));
+                // APIService.fetchChannel(channelId: 'UCRjJ4XGj6FnTiXbVoPY5Dqg');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Python_Playlist(
+                              url: "https://pythoncw.herokuapp.com/",
+                              title: "Python",
+                            )));
               },
               child: Container(
                 height: 240,
@@ -145,48 +158,53 @@ class _MainPageState extends State<MainPage> {
                       child: Stack(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: Colors.blueGrey[300],
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: shadowList,
-                              image: DecorationImage(image: AssetImage('assets/images/python.png'),fit: BoxFit.cover)
-                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.blueGrey[300],
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: shadowList,
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage('assets/images/python.png'),
+                                    fit: BoxFit.cover)),
                             margin: EdgeInsets.only(top: 50),
                           ),
-
                         ],
                       ),
                     ),
-                    Expanded(child: Container(
+                    Expanded(
+                        child: Container(
                       height: 150,
-                      margin: EdgeInsets.only(top: 60,bottom: 20),
+                      margin: EdgeInsets.only(top: 60, bottom: 20),
                       padding: EdgeInsets.only(left: 10, right: 10),
-                      decoration: BoxDecoration(color: Colors.white,
-
+                      decoration: BoxDecoration(
+                          color: Colors.white,
                           boxShadow: shadowList,
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20)
-
-                          )
-                      ),
-                      child: Center(child: Text("Python Course from Beginner to Advanced",
+                              bottomRight: Radius.circular(20))),
+                      child: Center(
+                          child: Text(
+                        "Python Course from Beginner to Advanced",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: primaryGreen,
                         ),
                       )),
-
                     ))
-
                   ],
                 ),
-
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Python_Playlist(url: "https://mlcw.herokuapp.com/", title: "Machine Learning",)));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Python_Playlist(
+                              url: "https://mlcw.herokuapp.com/",
+                              title: "Machine Learning",
+                            )));
               },
               child: Container(
                 height: 240,
@@ -197,50 +215,54 @@ class _MainPageState extends State<MainPage> {
                       child: Stack(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: Colors.orange[100],
+                            decoration: BoxDecoration(
+                              color: Colors.orange[100],
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: shadowList,
-                              image: DecorationImage(image: AssetImage('assets/images/mlcw1.png'),
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/mlcw1.png'),
                                 fit: BoxFit.cover,
                               ),
                             ),
                             margin: EdgeInsets.only(top: 50),
                           ),
-
                         ],
                       ),
                     ),
-                    Expanded(child: Container(
+                    Expanded(
+                        child: Container(
                       height: 150,
-                      margin: EdgeInsets.only(top: 60,bottom: 20),
+                      margin: EdgeInsets.only(top: 60, bottom: 20),
                       padding: EdgeInsets.only(left: 10, right: 10),
-                      decoration: BoxDecoration(color: Colors.white,
-
+                      decoration: BoxDecoration(
+                          color: Colors.white,
                           boxShadow: shadowList,
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20)
-
-                          )
-                      ),
-                      child: Center(child: Text("Machine Learning From Expert",
+                              bottomRight: Radius.circular(20))),
+                      child: Center(
+                          child: Text(
+                        "Machine Learning From Expert",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: primaryGreen,
                         ),
                       )),
-
                     ))
-
                   ],
                 ),
-
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Python_Playlist(url: "https://nlpcw.herokuapp.com/", title: "Natural Language Processing",)));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Python_Playlist(
+                              url: "https://nlpcw.herokuapp.com/",
+                              title: "Natural Language Processing",
+                            )));
               },
               child: Container(
                 height: 240,
@@ -251,33 +273,34 @@ class _MainPageState extends State<MainPage> {
                       child: Stack(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: Colors.orange[100],
+                            decoration: BoxDecoration(
+                              color: Colors.orange[100],
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: shadowList,
-                              image: DecorationImage(image: AssetImage('assets/images/nlpcw.png'),
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/nlpcw.png'),
                                 fit: BoxFit.cover,
                               ),
                             ),
                             margin: EdgeInsets.only(top: 50),
                           ),
-
                         ],
                       ),
                     ),
-                    Expanded(child: Container(
+                    Expanded(
+                        child: Container(
                       height: 150,
-                      margin: EdgeInsets.only(top: 60,bottom: 20),
-                      padding: EdgeInsets.only(left: 10,right: 10),
-                      decoration: BoxDecoration(color: Colors.white,
-
+                      margin: EdgeInsets.only(top: 60, bottom: 20),
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
                           boxShadow: shadowList,
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20)
-
-                          )
-                      ),
-                      child: Center(child: Text("Natural Language Processing With Code Warriors",
+                              bottomRight: Radius.circular(20))),
+                      child: Center(
+                          child: Text(
+                        "Natural Language Processing With Code Warriors",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -285,15 +308,19 @@ class _MainPageState extends State<MainPage> {
                         ),
                       )),
                     ))
-
                   ],
                 ),
-
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Python_Playlist(url: "https://cvcw.herokuapp.com/", title: "Computer Vision",)));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Python_Playlist(
+                              url: "https://cvcw.herokuapp.com/",
+                              title: "Computer Vision",
+                            )));
               },
               child: Container(
                 height: 240,
@@ -304,33 +331,35 @@ class _MainPageState extends State<MainPage> {
                       child: Stack(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: Colors.orange[100],
+                            decoration: BoxDecoration(
+                              color: Colors.orange[100],
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: shadowList,
-                              image: DecorationImage(image: AssetImage('assets/images/computer_vision.png'),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/computer_vision.png'),
                                 fit: BoxFit.cover,
                               ),
                             ),
                             margin: EdgeInsets.only(top: 50),
                           ),
-
                         ],
                       ),
                     ),
-                    Expanded(child: Container(
+                    Expanded(
+                        child: Container(
                       height: 150,
-                      margin: EdgeInsets.only(top: 60,bottom: 20),
-                      padding: EdgeInsets.only(left: 10,right: 10),
-                      decoration: BoxDecoration(color: Colors.white,
-
+                      margin: EdgeInsets.only(top: 60, bottom: 20),
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
                           boxShadow: shadowList,
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20)
-
-                          )
-                      ),
-                      child: Center(child: Text("Computer Vision using OpenCV",
+                              bottomRight: Radius.circular(20))),
+                      child: Center(
+                          child: Text(
+                        "Computer Vision using OpenCV",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -338,40 +367,32 @@ class _MainPageState extends State<MainPage> {
                         ),
                       )),
                     ))
-
                   ],
                 ),
-
               ),
             ),
-            SizedBox(height: 50,)
-
-
-
-
-
-
+            SizedBox(
+              height: 50,
+            )
           ],
         ),
       ),
     );
   }
 
-  _container(left, top, right, color, text, image){
+  _container(left, top, right, color, text, image) {
     return GestureDetector(
-      onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(
-            //builder: (context) => SelectedWork()
-        ));
+      onTap: () {
+        // Navigator.of(context).push(MaterialPageRoute(
+        //     //builder: (context) => SelectedWork()
+        // ));
       },
       child: Container(
         margin: EdgeInsets.only(left: left, right: right, top: top),
         height: 200,
-        width: (MediaQuery.of(context).size.width - 50) ,
+        width: (MediaQuery.of(context).size.width - 50),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: color
-        ),
+            borderRadius: BorderRadius.circular(20), color: color),
         child: Column(
           children: <Widget>[
             Container(
@@ -380,12 +401,16 @@ class _MainPageState extends State<MainPage> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage(image), fit: BoxFit.cover
-                  )
-              ),
+                      image: AssetImage(image), fit: BoxFit.cover)),
             ),
             SizedBox(height: 10),
-            Text(text, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),)
+            Text(
+              text,
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            )
           ],
         ),
       ),

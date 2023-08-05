@@ -1,17 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+
+import 'package:code_warrior/Screen/Quiz/resultpage.dart';
 import 'package:code_warrior/module/Configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:code_warrior/Screen/Quiz/resultpage.dart';
 
 class getjson extends StatelessWidget {
   // accept the langname as a parameter
 
   String langname;
   getjson(this.langname);
-  String assettoload;
+  String? assettoload;
 
   // a function
   // sets the asset to a particular JSON file
@@ -36,21 +37,18 @@ class getjson extends StatelessWidget {
     // the string assettoload is avialable to the DefaultAssetBuilder
     setasset();
     // and now we return the FutureBuilder to load and decode JSON
-    return
-
-      FutureBuilder(
+    return FutureBuilder(
       future:
-          DefaultAssetBundle.of(context).loadString(assettoload, cache: true),
+          DefaultAssetBundle.of(context).loadString(assettoload!, cache: true),
       builder: (context, snapshot) {
         List mydata = json.decode(snapshot.data.toString());
         print(mydata);
         if (mydata == null) {
           return Scaffold(
             body: Center(
-              child: CircularProgressIndicator(
-                backgroundColor: primaryGreen,
-              )
-            ),
+                child: CircularProgressIndicator(
+              backgroundColor: primaryGreen,
+            )),
           );
         } else {
           return quizpage(mydata: mydata);
@@ -63,7 +61,7 @@ class getjson extends StatelessWidget {
 class quizpage extends StatefulWidget {
   var mydata;
 
-  quizpage({Key key, @required this.mydata}) : super(key: key);
+  quizpage({Key? key, @required this.mydata}) : super(key: key);
   @override
   _quizpageState createState() => _quizpageState(mydata);
 }
@@ -96,19 +94,19 @@ class _quizpageState extends State<quizpage> {
   // to create the array elements randomly use the dart:math module
   // -----     CODE TO GENERATE ARRAY RANDOMLY
 
-  genrandomarray(){
+  genrandomarray() {
     var distinctIds = [];
     var rand = new Random();
-      for (int i = 0; ;) {
-      distinctIds.add(rand.nextInt(10)+1);
-        random_array = distinctIds.toSet().toList();
-        if(random_array.length < 10){
-          continue;
-        }else{
-          break;
-        }
+    for (int i = 0;;) {
+      distinctIds.add(rand.nextInt(10) + 1);
+      random_array = distinctIds.toSet().toList();
+      if (random_array.length < 10) {
+        continue;
+      } else {
+        break;
       }
-      print(random_array);
+    }
+    print(random_array);
   }
 
   //   var random_array;
@@ -240,8 +238,8 @@ class _quizpageState extends State<quizpage> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return WillPopScope(
-      onWillPop: () {
-        return showDialog(
+      onWillPop: () async {
+        showDialog(
             context: context,
             builder: (context) => AlertDialog(
                   title: Text(
@@ -249,7 +247,7 @@ class _quizpageState extends State<quizpage> {
                   ),
                   content: Text("You Can't Go Back At This Stage."),
                   actions: <Widget>[
-                    FlatButton(
+                    TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -259,6 +257,7 @@ class _quizpageState extends State<quizpage> {
                     )
                   ],
                 ));
+        return false;
       },
       child: Scaffold(
         body: Column(
