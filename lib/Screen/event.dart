@@ -22,7 +22,7 @@ class _EventPageState extends State<EventPage> {
     getevents() {
       var firestore = FirebaseFirestore.instance;
       Stream<QuerySnapshot> querySnapshot =
-          firestore.collection("Events").snapshots();
+      firestore.collection("Events").snapshots();
       return querySnapshot;
     }
 
@@ -45,26 +45,26 @@ class _EventPageState extends State<EventPage> {
               children: [
                 isDrawerOpen
                     ? IconButton(
-                        icon: Icon(Icons.arrow_back_ios),
-                        onPressed: () {
-                          setState(() {
-                            xOffset = 0;
-                            yOffset = 0;
-                            scaleFactor = 1;
-                            isDrawerOpen = false;
-                          });
-                        },
-                      )
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () {
+                    setState(() {
+                      xOffset = 0;
+                      yOffset = 0;
+                      scaleFactor = 1;
+                      isDrawerOpen = false;
+                    });
+                  },
+                )
                     : IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: () {
-                          setState(() {
-                            xOffset = 230;
-                            yOffset = 150;
-                            scaleFactor = 0.6;
-                            isDrawerOpen = true;
-                          });
-                        }),
+                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      setState(() {
+                        xOffset = 230;
+                        yOffset = 150;
+                        scaleFactor = 0.6;
+                        isDrawerOpen = true;
+                      });
+                    }),
                 SizedBox(
                   width: 50,
                 ),
@@ -129,9 +129,11 @@ class _EventPageState extends State<EventPage> {
                                         height: size.height * 0.2,
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(20.0),
+                                          BorderRadius.circular(20.0),
                                           child: Image.network(
-                                            "snapshot.data[index].data['image']",
+                                            (snapshot.data!.docs[index].data()
+                                            as Map<String, dynamic>)[
+                                            'image'],
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -144,10 +146,13 @@ class _EventPageState extends State<EventPage> {
                                               top: appPadding / 1.5),
                                           child: Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                "snapshot.data!.docs[index].data()",
+                                                (snapshot.data!.docs[index]
+                                                    .data()
+                                                as Map<String,
+                                                    dynamic>)['title'],
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 16,
@@ -159,8 +164,11 @@ class _EventPageState extends State<EventPage> {
                                               ),
                                               GestureDetector(
                                                 onTap: () {
-                                                  _launchevent(
-                                                      "snapshot.data[index].data['link']");
+                                                  _launchevent((snapshot
+                                                      .data!.docs[index]
+                                                      .data()
+                                                  as Map<String,
+                                                      dynamic>)['link']);
                                                 },
                                                 child: Row(
                                                   children: [
@@ -174,7 +182,12 @@ class _EventPageState extends State<EventPage> {
                                                     ),
                                                     Expanded(
                                                       child: Text(
-                                                        "snapshot.data[index].data['link']",
+                                                        (snapshot.data!
+                                                            .docs[index]
+                                                            .data()
+                                                        as Map<String,
+                                                            dynamic>)[
+                                                        'link'],
                                                         style: TextStyle(
                                                           color: Colors.black
                                                               .withOpacity(0.3),
@@ -199,12 +212,15 @@ class _EventPageState extends State<EventPage> {
                                                   ),
                                                   Expanded(
                                                       child: Text(
-                                                    "snapshot.data[index].data['date']",
-                                                    style: TextStyle(
-                                                      color: Colors.black
-                                                          .withOpacity(0.3),
-                                                    ),
-                                                  ))
+                                                        (snapshot.data!.docs[index]
+                                                            .data()
+                                                        as Map<String,
+                                                            dynamic>)['date'],
+                                                        style: TextStyle(
+                                                          color: Colors.black
+                                                              .withOpacity(0.3),
+                                                        ),
+                                                      ))
                                                 ],
                                               ),
                                             ],

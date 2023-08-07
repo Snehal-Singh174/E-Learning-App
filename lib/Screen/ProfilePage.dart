@@ -39,15 +39,14 @@ class _ProfilePageState extends State<ProfilePage> {
         .doc(firebaseUser.uid)
         .get()
         .then((value) {
-      print(value.data());
-      // setState(() {
-      //   username = value.data["username"];
-      //   print(username);
-      //   email = value.data["email"];
-      //   method = value.data["method"];
-      //   category = value.data["category"];
-      //   image = value.data["photourl"];
-      // });
+      Map<String, dynamic>? data = value.data();
+      setState(() {
+        username = data!["username"];
+        email = data["email"];
+        method = data["method"];
+        category = data["category"];
+        image = data["photourl"];
+      });
     });
   }
 
@@ -110,12 +109,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
     Future updatedata() async {
       var firebaseUser = await FirebaseAuth.instance.currentUser!;
-      setState(() {
-        print("Data Updated");
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Data Updated"),
-        ));
-      });
       databaseReference
           .collection("User")
           .doc(firebaseUser.uid)
@@ -134,7 +127,11 @@ class _ProfilePageState extends State<ProfilePage> {
             usernamecontroller.text != "" ? usernamecontroller.text : username,
         'email': emailcontroller.text != "" ? emailcontroller.text : email,
       }).then((_) {
-        print("success!");
+        setState(() {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Data Updated"),
+          ));
+        });
       });
     }
 
@@ -360,28 +357,42 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                ElevatedButton(
-                  // color: Color(0xFF62B9BF),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  // elevation: 4.0,
-                  // splashColor: Colors.blueGrey,
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                Container(
+                  margin: EdgeInsets.only(top: 10,bottom: 10),
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF62B9BF),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      )
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
+                    ),
                   ),
                 ),
-                ElevatedButton(
-                  // color: Color(0xFF62B9BF),
-                  onPressed: () {
-                    updatedata();
-                  },
-                  // elevation: 4.0,
-                  // splashColor: Colors.blueGrey,
-                  child: Text(
-                    'Submit',
-                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                Container(
+                  margin: EdgeInsets.only(top: 10,bottom: 10),
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF62B9BF),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5),
+                      )
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      updatedata();
+                    },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
+                    ),
                   ),
                 ),
               ],

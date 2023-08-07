@@ -32,18 +32,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         'email':emailcontroller.text,
         'password':passwordcontroller.text,
         'username': usernamecontroller.text,
-        'photourl':null,
+        'photourl': null,
       });
-//      DocumentReference ref = await databaseReference.collection("User")
-//      .add({
-//        "email":emailcontroller.text,
-//        "pasword":passwordcontroller.text,
-//      });
-      print("Signin Successfull");
       setState(() {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Verify your email first and then login"),));
-
       });
     }catch(e){
       print(e);
@@ -159,7 +152,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Radius.circular(20),
                             )
                         ),
-                        child: ElevatedButton(
+                        child: TextButton(
                           onPressed: () async {
                             signup(context);},
                           child: Text(

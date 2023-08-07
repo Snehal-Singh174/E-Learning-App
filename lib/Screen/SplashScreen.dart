@@ -63,15 +63,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Icon(Icons.arrow_back_ios),
               ),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: (){
-                // print(initialPage);
-                // print(list.length);
-                // if (initialPage < (list.length-1))
-                //   _controller.animateToPage(list.length,
-                //       duration: Duration(microseconds: 500),
-                //       curve: Curves.easeIn);
-                // else if(initialPage == (list.length-1))
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen(),));
               },
               child: Text("Skip",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16,color: Colors.black),),
