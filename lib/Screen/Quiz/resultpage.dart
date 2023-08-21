@@ -1,4 +1,4 @@
-import 'package:code_warrior/Screen/HomePage.dart';
+import 'package:code_warrior/Screen/home_page.dart';
 import 'package:flutter/material.dart';
 
 class resultpage extends StatefulWidget {

@@ -1,31 +1,35 @@
+
 import 'package:code_warrior/module/video_model.dart';
 
 class Channel {
+
   final String? id;
   final String? title;
-  final String? profilepicurl;
-  final String? subscribercount;
-  final String? videocount;
-  final String? uploadplaylistid;
+  final String? profilePictureUrl;
+  final String? subscriberCount;
+  final String? videoCount;
+  final String? uploadPlaylistId;
   List<Video>? videos;
 
-  Channel(
-      {this.id,
-      this.title,
-      this.profilepicurl,
-      this.subscribercount,
-      this.videocount,
-      this.uploadplaylistid,
-      this.videos});
+  Channel({
+    this.id,
+    this.title,
+    this.profilePictureUrl,
+    this.subscriberCount,
+    this.videoCount,
+    this.uploadPlaylistId,
+    this.videos,
+  });
 
   factory Channel.fromMap(Map<String, dynamic> map) {
     return Channel(
       id: map['id'],
       title: map['snippet']['title'],
-      profilepicurl: map['snippet']['thumbnail']['default']['url'],
-      subscribercount: map['statistics']['subscriberCount'],
-      videocount: map['statistics']['videoCount'],
-      uploadplaylistid: map['contentDetails']['relatedPlaylists']['uploads'],
+      profilePictureUrl: map['snippet']['thumbnails']['default']['url'],
+      subscriberCount: map['statistics']['subscriberCount'],
+      videoCount: map['statistics']['videoCount'],
+      uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'],
     );
   }
+
 }

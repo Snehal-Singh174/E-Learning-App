@@ -1,5 +1,5 @@
-import 'package:code_warrior/Screen/MainPage.dart';
-import 'package:code_warrior/Screen/ProfilePage.dart';
+import 'package:code_warrior/Screen/main_page.dart';
+import 'package:code_warrior/Screen/profile_page.dart';
 import 'package:code_warrior/Screen/Quiz/quizhomepage.dart';
 import 'package:code_warrior/Screen/contactus.dart';
 import 'package:code_warrior/Screen/drawer.dart';

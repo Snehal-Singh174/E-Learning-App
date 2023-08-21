@@ -1,5 +1,5 @@
-import 'package:code_warrior/Screen/HomePage.dart';
-import 'package:code_warrior/Screen/SignUpScreen.dart';
+import 'package:code_warrior/Screen/home_page.dart';
+import 'package:code_warrior/Screen/signup_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

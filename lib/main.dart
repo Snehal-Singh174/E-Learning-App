@@ -1,5 +1,5 @@
-import 'package:code_warrior/Screen/HomePage.dart';
-import 'package:code_warrior/Screen/SplashScreen.dart';
+import 'package:code_warrior/Screen/home_page.dart';
+import 'package:code_warrior/Screen/splash_screen.dart';
 import 'package:code_warrior/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

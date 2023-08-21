@@ -1,4 +1,4 @@
-import 'package:code_warrior/Screen/courses/python_playlist.dart';
+import 'package:code_warrior/Screen/courses/play_list.dart';
 import 'package:code_warrior/module/Configuration.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +16,7 @@ class _MainPageState extends State<MainPage> {
   double scaleFactor = 1;
 
   bool isDrawerOpen = false;
+
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
@@ -139,15 +140,8 @@ class _MainPageState extends State<MainPage> {
 
             GestureDetector(
               onTap: () {
-                //Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
-                // APIService.fetchChannel(channelId: 'UCRjJ4XGj6FnTiXbVoPY5Dqg');
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Python_Playlist(
-                              url: "https://pythoncw.herokuapp.com/",
-                              title: "Python",
-                            )));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PlayList(title: 'Python', playlistId: 'PLZV4RP3aP3FDCxF89ypKCgQD_ePnMjsqS',)));
               },
               child: Container(
                 height: 240,
@@ -201,8 +195,8 @@ class _MainPageState extends State<MainPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Python_Playlist(
-                              url: "https://mlcw.herokuapp.com/",
+                        builder: (context) => PlayList(
+                              playlistId: "PLZV4RP3aP3FBwC1KtpFUgTU6KFPJzJ_JD",
                               title: "Machine Learning",
                             )));
               },
@@ -259,8 +253,8 @@ class _MainPageState extends State<MainPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Python_Playlist(
-                              url: "https://nlpcw.herokuapp.com/",
+                        builder: (context) => PlayList(
+                              playlistId: "PLZV4RP3aP3FCxidsDQ340SrMA9TrhcOyw",
                               title: "Natural Language Processing",
                             )));
               },
@@ -317,8 +311,8 @@ class _MainPageState extends State<MainPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Python_Playlist(
-                              url: "https://cvcw.herokuapp.com/",
+                        builder: (context) => PlayList(
+                              playlistId: "PLZV4RP3aP3FAO4UuQTVBreZtHckUw3ZlH",
                               title: "Computer Vision",
                             )));
               },
@@ -383,9 +377,6 @@ class _MainPageState extends State<MainPage> {
   _container(left, top, right, color, text, image) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).push(MaterialPageRoute(
-        //     //builder: (context) => SelectedWork()
-        // ));
       },
       child: Container(
         margin: EdgeInsets.only(left: left, right: right, top: top),

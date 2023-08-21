@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
-
   final String? id;
 
   VideoScreen({this.id});
@@ -12,7 +11,6 @@ class VideoScreen extends StatefulWidget {
 }
 
 class _VideoScreenState extends State<VideoScreen> {
-
   YoutubePlayerController? _controller;
 
   @override
@@ -25,18 +23,33 @@ class _VideoScreenState extends State<VideoScreen> {
         autoPlay: true,
       ),
     );
+    _controller!.toggleFullScreenMode();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: YoutubePlayer(
-        controller: _controller!,
-        showVideoProgressIndicator: true,
-        onReady: () {
-          print('Player is ready.');
-        },
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pop(context);
+        return true;
+      },
+      child: Scaffold(
+        body: YoutubePlayerBuilder(
+          player: YoutubePlayer(
+            controller: _controller!,
+            showVideoProgressIndicator: true,
+            onReady: () {
+              print('Player is ready.');
+            },
+          ),
+          builder: (context, player) {
+            return Column(
+              children: [
+                player,
+              ],
+            );
+          },
+        ),
       ),
     );
   }

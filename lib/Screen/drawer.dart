@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:code_warrior/Screen/LoginScreen.dart';
-import 'package:code_warrior/Screen/SplashScreen.dart';
+import 'package:code_warrior/Screen/login_page.dart';
+import 'package:code_warrior/Screen/splash_screen.dart';
 import 'package:code_warrior/module/Configuration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
