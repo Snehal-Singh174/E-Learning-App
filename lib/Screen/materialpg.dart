@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:code_warrior/Screen/courses/material_viewer.dart';
 import 'package:code_warrior/module/Configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -121,12 +122,13 @@ class _QuizState extends State<QuizPage> {
                                   color: Colors.white,
                                 ),
                                 onTap: () async {
-                                  if (await canLaunch(document["link"])) {
-                                    await launch(document["link"],
-                                        forceWebView: true);
-                                  } else {
-                                    throw "Couldn't launch URL";
-                                  }
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MaterialPDFViewer(
+                                                materialLink: document['link'],
+                                              )));
                                 },
                               ),
                             ),

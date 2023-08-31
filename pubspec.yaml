@@ -28,7 +28,6 @@ dependencies:
   http:
   flutter_pdfview:
   youtube_player_flutter:
-  flutter_webview_plugin: ^0.4.0
   firebase_storage: ^11.2.5
   firebase_core: ^2.15.0
   image_picker: ^1.0.1
@@ -41,6 +40,7 @@ dependencies:
   dio:
   path_provider:
   shared_preferences: ^2.2.0
+  syncfusion_flutter_pdfviewer: ^22.2.11
 dev_dependencies:
   flutter_test:
     sdk: flutter
