@@ -18,7 +18,7 @@
 In the present scenario due to Covid-19, there is no efficient e-learning applications which are now in high demand for courses, materials, quiz and personal mentor support. Also, the absence of skills and knowledge has made this task more cumbersome and challenging. 
 
 ## :hourglass: Project Demo
-:movie_camera: [YouTube Demo Link](https://www.youtube.com/watch?v=Ufds89uJy3k)
+:movie_camera: [YouTube Demo Link](https://youtu.be/OjCkP7UKVZw)
 
 ## :warning: TechStack/framework used
 
